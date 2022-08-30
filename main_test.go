@@ -6,6 +6,7 @@ import (
 )
 
 func Test_sayHello(t *testing.T) {
+	someFlag := false
 	t.Run("empty name", func(t *testing.T) {
 		require.NoError(t, sayHello(""))
 	})
@@ -14,5 +15,9 @@ func Test_sayHello(t *testing.T) {
 	})
 	t.Run("Voldemort makes it fail every second time", func(t *testing.T) {
 		require.NoError(t, sayHello("Voldemort"))
+		someFlag = true
+	})
+	t.Run("check flag", func(t *testing.T) {
+		require.True(t, someFlag)
 	})
 }
